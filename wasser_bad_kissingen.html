@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bad Kissingen informiert: Wasser ist nicht gleich Wasser</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            min-height: 100vh;
+            color: #1e293b; 
+            scroll-behavior: smooth;
+        }
+        .container {
+            max-width: 900px; 
+            margin: 0 auto;
+            padding: 15px;
+        }
+        .header-main {
+            background: rgba(255, 255, 255, 0.85); 
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            text-align: center;
+            border: 1px solid rgba(100, 116, 139, 0.2);
+        }
+        .header-main h1 {
+            color: #0c4a6e; 
+            font-size: 2rem; 
+            margin-bottom: 8px;
+        }
+        .header-main .subtitle {
+            color: #334155; 
+            font-size: 1rem; 
+        }
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px; 
+            margin-bottom: 20px; 
+            box-shadow: 0 6px 20px rgba(149, 165, 194, 0.25); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-4px); 
+            box-shadow: 0 10px 28px rgba(149, 165, 194, 0.35);
+        }
+        .card h2 {
+            color: #1e3a8a; 
+            font-size: 1.6rem; 
+            margin-bottom: 15px;
+            border-bottom: 3px solid #38bdf8; 
+            padding-bottom: 8px;
+        }
+        .icon-grid { 
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .icon-grid-item { 
+            background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+            color: white;
+            padding: 15px; 
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .icon-grid-item:hover {
+            transform: scale(1.05);
+        }
+        .icon-grid-item .emoji { 
+            font-size: 2.2rem; 
+            margin-bottom: 8px;
+            display: block;
+        }
+        .water-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .water-type-card {
+            padding: 15px;
+            border-radius: 10px;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+        .water-type-card h3 {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .water-type-card p {
+            font-size: 0.8rem;
+            opacity: 0.95;
+        }
+        .type-heilwasser { background: linear-gradient(45deg, #c0392b, #e74c3c); }
+        .type-mineralwasser { background: linear-gradient(45deg, #e67e22, #f39c12); }
+        .type-quellwasser { background: linear-gradient(45deg, #f1c40f, #f39c12); }
+        .type-tafelwasser { background: linear-gradient(45deg, #27ae60, #2ecc71); }
+        .type-trinkwasser { background: linear-gradient(45deg, #2980b9, #3498db); }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .comparison-table th {
+            background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+            color: white;
+            padding: 10px 12px; 
+            text-align: left;
+            font-size: 0.85rem; 
+        }
+        .comparison-table td {
+            padding: 8px 12px; 
+            border-bottom: 1px solid #e5e7eb; 
+            font-size: 0.85rem; 
+        }
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9fafb; 
+        }
+        .water-drop {
+            display: inline-block;
+            width: 22px; 
+            height: 22px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            margin-right: 6px;
+            animation: float 2s ease-in-out infinite;
+            vertical-align: middle;
+        }
+        @keyframes float {
+            0%, 100% { transform: rotate(-45deg) translateY(0px); }
+            50% { transform: rotate(-45deg) translateY(-5px); } 
+        }
+        .footer {
+            text-align: center;
+            color: #475569; 
+            margin-top: 30px; 
+            padding: 15px;
+            font-size: 0.85rem; 
+        }
+        .footer .source-info {
+            background: rgba(255,255,255,0.7);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            text-align: left;
+            font-size: 0.75rem; 
+            border: 1px solid rgba(100, 116, 139, 0.1);
+        }
+        .footer .source-info a {
+            color: #0ea5e9; 
+            text-decoration: underline;
+        }
+        .sticky-nav {
+            background: rgba(255, 255, 255, 0.97); 
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 8px 0; 
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center;
+        }
+        .nav-links a { 
+            color: #334155; 
+            margin: 0 8px; 
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem; 
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #0ea5e9; 
+        }
+        .language-switcher {
+            margin-top: 5px;
+        }
+        .lang-btn {
+            background-color: #e0f2fe;
+            color: #0c4a6e;
+            border: 1px solid #7dd3fc;
+            padding: 3px 7px;
+            margin: 0 2px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            transition: background-color 0.3s ease;
+        }
+        .lang-btn:hover, .lang-btn.active {
+            background-color: #38bdf8;
+            color: white;
+        }
+
+        .highlight-fact {
+            background: linear-gradient(135deg, #fff3cd, #ffe4b5);
+            border-left: 4px solid #ffc107;
+            color: #5b4600;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        .mineralwater-process-card {
+            background: linear-gradient(135deg, #c1f0d0, #a8edea); 
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .image-container { 
+            background-color: #e0f2fe; 
+            padding: 10px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #93c5fd; 
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 8px; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .image-container .caption { 
+            color: #0c4a6e;
+            font-style: italic;
+            font-size: 0.75rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-main h1 { font-size: 1.6rem; }
+            .header-main .subtitle { font-size: 0.9rem; }
+            .container { padding: 10px; }
+            .card { padding: 15px; }
+            .card h2 { font-size: 1.4rem; }
+            .sticky-nav { flex-direction: column; } 
+            .nav-links a { font-size: 0.75rem; margin: 0 3px;}
+            .icon-grid-item .emoji { font-size: 2rem; }
+            .lang-btn { font-size: 0.65rem; padding: 2px 5px;}
+        }
+         @media (min-width: 769px) { 
+            .sticky-nav {
+                flex-direction: row;
+                justify-content: space-between; 
+                padding-left: 20px; 
+                padding-right: 20px;
+            }
+            .language-switcher {
+                margin-top: 0; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="sticky-nav">
+        <div class="nav-links">
+            <a href="#intro-bk">Start</a>
+            <a href="#wasser-gesundheit-bk">Gesundheit</a>
+            <a href="#wasserhaerte-bk">Härte</a>
+            <a href="#wasserarten-bk">Arten</a>
+            <a href="#mineralwasser-entstehung-bk">Entstehung</a>
+            <a href="#vergleich-bk">Vergleich</a>
+            <a href="#mineralwasser-infos-bk">Mineralwasser-Fakten</a>
+            </div>
+        <div class="language-switcher">
+            <button class="lang-btn active" data-lang="de">D</button>
+            <button class="lang-btn" data-lang="de_simple">DS</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="vn">VN</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="intro-bk" class="header-main">
+            <h1 data-translate="mainTitle"><span class="water-drop"></span>Bad Kissingen informiert: Wasser ist nicht gleich Wasser</h1>
+            <p class="subtitle" data-translate="mainSubtitle">Entdecken Sie die Vielfalt und Bedeutung unseres Lebenselixiers.</p>
+        </div>
+
+        <div class="card">
+             <img src="https://placehold.co/800x250/67e8f9/0891b2?text=Wasserwissen+Bad+Kissingen" alt="Wasserwissen Bad Kissingen" class="mx-auto rounded-lg shadow-md mb-4" onerror="this.src='https://placehold.co/800x250/e0f2fe/0ea5e9?text=Erfrischendes+Wasser'; this.onerror=null;">
+            <p class="text-center text-sm" data-translate="introText">Wasser ist die Grundlage allen Lebens und spielt besonders in einem Kurort wie Bad Kissingen eine zentrale Rolle. Doch Wasser ist nicht einfach nur H<sub>2</sub>O – es gibt erstaunliche Unterschiede!</p>
+        </div>
+
+        <div id="wasser-gesundheit-bk" class="card">
+            <h2 data-translate="healthTitle">💧 Wasser für Ihre Gesundheit</h2>
+            <p class="text-xs text-center mb-3" data-translate="healthSubtitle">Wasser ist ein wahrer Gesundheitsbrunnen. Es ist essentiell für:</p>
+            <div class="icon-grid">
+                <div class="icon-grid-item">
+                    <span class="emoji">🌡️</span>
+                    <strong data-translate="healthBenefit1Title">Körpertemperatur</strong><br><span class="text-xs" data-translate="healthBenefit1Text">Regulierung & Stabilität</span>
+                </div>
+                <div class="icon-grid-item">
+                    <span class="emoji">💪</span>
+                    <strong data-translate="healthBenefit2Title">Stoffwechsel</strong><br><span class="text-xs" data-translate="healthBenefit2Text">Täglich 1,5-2 Liter für optimale Funktion</span>
+                </div>
+                <div class="icon-grid-item">
+                    <span class="emoji">🧠</span>
+                    <strong data-translate="healthBenefit3Title">Leistungsfähigkeit</strong><br><span class="text-xs" data-translate="healthBenefit3Text">Unterstützt Konzentration</span>
+                </div>
+            </div>
+            <p class="text-xs text-center mt-3" data-translate="h2oFormula">Die einfache Formel für Wasser ist H<sub>2</sub>O: zwei Wasserstoffatome (H) und ein Sauerstoffatom (O).</p>
+        </div>
+        
+        <div id="wasserhaerte-bk" class="card">
+            <h2 data-translate="hardnessTitle">💎 Wasserhärte: Weich vs. Hart</h2>
+            <p class="text-xs text-center mb-3" data-translate="hardnessSubtitle">Der Gehalt an Mineralien wie Calcium und Magnesium bestimmt die Härte. Die darin gelösten Mineralien machen den Unterschied im Geschmack und Verhalten!</p>
+            <div class="icon-grid">
+                 <div class="icon-grid-item" style="background: linear-gradient(135deg, #fed7aa, #fca5a5);">
+                    <span class="emoji">☕</span>
+                    <strong data-translate="softWaterTitle">WEICHES WASSER</strong><br><span class="text-xs" data-translate="softWaterText">Wenig Mineralien. Schmeckt oft schal (fad), besitzt aber große Lösungskraft und ist daher gut für Tee/Kaffee.</span>
+                </div>
+                <div class="icon-grid-item" style="background: linear-gradient(135deg, #bfdbfe, #93c5fd);">
+                    <span class="emoji">🥛</span>
+                    <strong data-translate="hardWaterTitle">HARTES WASSER</strong><br><span class="text-xs" data-translate="hardWaterText">Viele Mineralien (Ca, Mg). Schmeckt oft frisch, verkalkt jedoch Geräte, Behälter und Rohre.</span>
+                </div>
+            </div>
+            <div class="text-xs text-center bg-slate-100 p-2 rounded-md mt-3" data-translate="hardnessMeasurement">
+                <strong>Messung in °dH (deutschen Härtegraden):</strong> Bis 4°dH = sehr weich; Über 21°dH = sehr hart.
+            </div>
+        </div>
+
+        <div id="wasserarten-bk" class="card">
+            <h2 data-translate="waterTypesTitle">🏔️ Qualitätsstufen von Wässern</h2>
+            <p class="text-xs text-center mb-3" data-translate="waterTypesSubtitle">Unterschiedliche Wässer unterliegen verschiedenen Anforderungen und gesetzlichen Regelungen:</p>
+            <div class="water-types-grid">
+                <div class="water-type-card type-trinkwasser">
+                    <h3 data-translate="typeTrinkwasserTitle">TRINKWASSER (LEITUNG) 🚰</h3>
+                    <p data-translate="typeTrinkwasserText">Aus Grund- & Oberflächenwasser, Aufbereitung üblich. Geregelt durch die Trinkwasserverordnung (TrinkwV). Streng kontrolliert & sicher.</p>
+                </div>
+                <div class="water-type-card type-tafelwasser">
+                    <h3 data-translate="typeTafelwasserTitle">TAFELWASSER 🧪</h3>
+                    <p data-translate="typeTafelwasserText">Aufbereitete Trink- oder Mineralwässer, oft gemischt. Zusätze (z.B. Mineralsalze, Kohlensäure) erlaubt. Geregelt durch die Mineral- und Tafelwasserverordnung (MTVO).</p>
+                </div>
+                <div class="water-type-card type-quellwasser">
+                    <h3 data-translate="typeQuellwasserTitle">QUELLWASSER 🌊</h3>
+                    <p data-translate="typeQuellwasserText">Aus unterirdischen Vorkommen, ursprünglich rein. Muss Trinkwasser-Standards erfüllen. Geregelt durch die Mineral- und Tafelwasserverordnung (MTVO).</p>
+                </div>
+                <div class="water-type-card type-mineralwasser">
+                    <h3 data-translate="typeMineralwasserTitle">NATÜRLICHES MINERALWASSER 🏔️</h3>
+                    <p data-translate="typeMineralwasserText">Ursprüngliche Reinheit aus geschützten Tiefenquellen, amtlich anerkannt, konstante Mineralisierung. Geregelt durch die Mineral- und Tafelwasserverordnung (MTVO).</p>
+                </div>
+                <div class="water-type-card type-heilwasser">
+                    <h3 data-translate="typeHeilwasserTitle">HEILWASSER 💊</h3>
+                    <p data-translate="typeHeilwasserText">Nachgewiesene vorbeugende, lindernde oder heilende Wirkung. Gilt rechtlich als Arzneimittel und unterliegt dem Arzneimittelgesetz (AMG). Benötigt BfArM-Zulassung.</p>
+                </div>
+            </div>
+             <p class="text-xs text-center mt-4 text-slate-500" data-translate="regulationsSummary">Die Qualität der Wässer wird durch unterschiedliche Verordnungen geregelt: Trinkwasserverordnung (TrinkwV), Mineral- und Tafelwasserverordnung (MTVO) und für Heilwässer das Arzneimittelgesetz (AMG).</p>
+        </div>
+        
+        <div id="mineralwasser-entstehung-bk" class="card mineralwater-process-card">
+            <h2 data-translate="mineralOriginTitle">🌱 Wie entsteht Natürliches Mineralwasser?</h2>
+            <p class="text-xs mb-3" data-translate="mineralOriginSubtitle">Der lange Weg des Wassers durch die Erde zu seiner einzigartigen Reinheit und Mineralisierung:</p>
+            <div class="image-container">
+                <img src="https://i.imgur.com/lJTS4lH.png" alt="Schema der Entstehung von Natürlichem Mineralwasser" class="mx-auto rounded-lg shadow-md">
+                <p class="caption mt-2" data-translate="mineralOriginImageCaption">Darstellung aus dem Buch "Erlebnis Hotel", S. 295.</p>
+            </div>
+            <p class="text-xs mt-3" data-translate="mineralOriginText">Regenwasser sickert langsam durch verschiedene Gesteins- und Bodenschichten. Dabei wird es natürlich gefiltert und reichert sich mit wertvollen Mineralstoffen und Spurenelementen an. Aus geschützten Tiefenquellen wird dieses ursprünglich reine Wasser dann direkt als Natürliches Mineralwasser abgefüllt.</p>
+        </div>
+
+        <div id="vergleich-bk" class="card">
+            <h2 data-translate="comparisonTitle">⚖️ Trinkwasser vs. Natürliches Mineralwasser</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th data-translate="comparisonHeader1">Eigenschaft</th>
+                        <th data-translate="comparisonHeader2">Trinkwasser (Leitung)</th>
+                        <th data-translate="comparisonHeader3">Natürliches Mineralwasser</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td data-translate="comparisonRow1Col1"><strong>Herkunft</strong></td><td data-translate="comparisonRow1Col2">Überwiegend aus Grund- und Oberflächenwasser</td><td data-translate="comparisonRow1Col3">Geschützte Tiefenquellen</td></tr>
+                    <tr><td data-translate="comparisonRow2Col1"><strong>Behandlung</strong></td><td data-translate="comparisonRow2Col2">Chemische Aufbereitung erlaubt</td><td data-translate="comparisonRow2Col3">Nur geringe Ausnahmen erlaubt</td></tr>
+                    <tr><td data-translate="comparisonRow3Col1"><strong>Mineralien</strong></td><td data-translate="comparisonRow3Col2">Kann schwanken</td><td data-translate="comparisonRow3Col3">Konstant (Etikett)</td></tr>
+                    <tr><td data-translate="comparisonRow4Col1"><strong>Gesetze</strong></td><td data-translate="comparisonRow4Col2">Trinkwasserverordnung (TrinkwV)</td><td data-translate="comparisonRow4Col3">Mineral- und Tafelwasserverordnung (MTVO)</td></tr>
+                    <tr><td data-translate="comparisonRow5Col1"><strong>Reinheit</strong></td><td data-translate="comparisonRow5Col2">Rein und Genusstauglich</td><td data-translate="comparisonRow5Col3">Ursprüngliche, unveränderte Reinheit</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="highlight-fact">
+             <span class="emoji">💡</span> <strong data-translate="importantNote">Wichtig zu wissen:</strong> <span data-translate="importantNoteText">Deutsches Leitungswasser zählt global zu den am besten kontrollierten und qualitativ hochwertigsten überhaupt. Beide Wasserarten unterliegen strengen Qualitätskontrollen. Die Entscheidung liegt schlussendlich bei der Vorliebe des Konsumenten.</span>
+        </div>
+
+        <div id="mineralwasser-infos-bk" class="card">
+            <h2 data-translate="naturalMineralWaterTitle">✨ Natürliches Mineralwasser: Besondere Merkmale</h2>
+            <ul class="list-disc list-inside space-y-1 text-xs text-slate-700 pl-3">
+                <li data-translate="naturalMineralWaterFact1"><strong>Ursprüngliche Reinheit:</strong> Direkt aus geschützter, unterirdischer Quelle.</li>
+                <li data-translate="naturalMineralWaterFact2"><strong>Quellortabfüllung:</strong> Muss direkt an der Quelle abgefüllt werden.</li>
+                <li data-translate="naturalMineralWaterFact3"><strong>Amtliche Anerkennung:</strong> Erfüllt strenge Kriterien, die in der Mineral- und Tafelwasserverordnung (MTVO) festgelegt sind. Bestätigt konstante Zusammensetzung & Reinheit.</li>
+                <li data-translate="naturalMineralWaterFact4"><strong>Definierte Mineralisierung:</strong> Charakteristischer Gehalt (Etikett), ernährungsphysiologische Eigenschaften möglich.</li>
+                <li data-translate="naturalMineralWaterFact5"><strong>Stark begrenzte Behandlung:</strong> Erlaubt sind nur das Zusetzen und Entfernen von Kohlensäure sowie das Entfernen von Schwefel und Eisen (damit es nicht schlecht riecht oder farblich braun aussieht).</li>
+            </ul>
+        </div>
+
+        <div class="card text-center bg-sky-50 border border-sky-200"> 
+            <h2 class="text-sky-700 text-base" data-translate="waterIsLifeTitle">🌍 Wasser ist Leben – Schützen wir es!</h2>
+            <p class="text-xs text-slate-600" data-translate="waterIsLifeText">Wasser ist eine unserer wertvollsten Ressourcen. Ein bewusster Umgang hilft, seine Qualität und Verfügbarkeit für die Zukunft zu sichern. Bad Kissingen, als traditionsreicher Kurort, weiß um die Bedeutung reinen Wassers.</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Bad Kissingen informiert.</p>
+        <div class="source-info">
+            <strong>Quellen (Informationen u.a. basierend auf):</strong><br>
+            Breitwieser, D., Gutmayer, W., Wolfschluckner, R., Stickler, J., Pfleger, A., Stanek, W., Ruetz, C., Fischer, P., Krausler, K., Weissensteiner-Wiessler, I., Letzner, C., Rehak, S., Wutzl, C., Drischel, C., Forjan, R. & Schreiber, M. (2024). <em>Erlebnis Hotel: Hotelfachfrau/Hotelfachmann</em> (2. Auflage). Trauner Verlag. (S.294f). Abrufbar unter: <a href="https://permalink.obvsg.at/AC17200616" target="_blank" rel="noopener noreferrer">https://permalink.obvsg.at/AC17200616</a>
+            <br>
+            Bundesamt für Verbraucherschutz und Lebensmittelsicherheit (BVL). Wasser. Abgerufen von <a href="https://www.bvl.bund.de/DE/Arbeitsbereiche/01_Lebensmittel/03_Verbraucher/15_Wasser_Mineralwasser/wasser_basepage.html" target="_blank" rel="noopener noreferrer">https://www.bvl.bund.de</a>
+            <br>Darstellung der Entstehung von Mineralwasser (Abschnitt "Wie entsteht Natürliches Mineralwasser?") aus dem Buch "Erlebnis Hotel", S. 295.
+            <br>Weitere verwendete Informationen und Bilder dienten als Inspiration für die visuelle und inhaltliche Gestaltung dieser Informationsseite.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerOffset = document.querySelector('.sticky-nav').offsetHeight;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    }
+                });
+            });
+
+            const translations = {
+                de: {
+                    mainTitle: "Bad Kissingen informiert: Wasser ist nicht gleich Wasser",
+                    mainSubtitle: "Entdecken Sie die Vielfalt und Bedeutung unseres Lebenselixiers.",
+                    introText: "Wasser ist die Grundlage allen Lebens und spielt besonders in einem Kurort wie Bad Kissingen eine zentrale Rolle. Doch Wasser ist nicht einfach nur H<sub>2</sub>O – es gibt erstaunliche Unterschiede!",
+                    healthTitle: "💧 Wasser für Ihre Gesundheit",
+                    healthSubtitle: "Wasser ist ein wahrer Gesundheitsbrunnen. Es ist essentiell für:",
+                    healthBenefit1Title: "Körpertemperatur",
+                    healthBenefit1Text: "Regulierung & Stabilität",
+                    healthBenefit2Title: "Stoffwechsel",
+                    healthBenefit2Text: "Täglich 1,5-2 Liter für optimale Funktion",
+                    healthBenefit3Title: "Leistungsfähigkeit",
+                    healthBenefit3Text: "Unterstützt Konzentration",
+                    h2oFormula: "Die einfache Formel für Wasser ist H<sub>2</sub>O: zwei Wasserstoffatome (H) und ein Sauerstoffatom (O).",
+                    hardnessTitle: "💎 Wasserhärte: Weich vs. Hart",
+                    hardnessSubtitle: "Der Gehalt an Mineralien wie Calcium und Magnesium bestimmt die Härte. Die darin gelösten Mineralien machen den Unterschied im Geschmack und Verhalten!",
+                    softWaterTitle: "WEICHES WASSER",
+                    softWaterText: "Wenig Mineralien. Schmeckt oft schal (fad), besitzt aber große Lösungskraft und ist daher gut für Tee/Kaffee.",
+                    hardWaterTitle: "HARTES WASSER",
+                    hardWaterText: "Viele Mineralien (Ca, Mg). Schmeckt oft frisch, verkalkt jedoch Geräte, Behälter und Rohre.",
+                    hardnessMeasurement: "<strong>Messung in °dH (deutschen Härtegraden):</strong> Bis 4°dH = sehr weich; Über 21°dH = sehr hart.",
+                    waterTypesTitle: "🏔️ Qualitätsstufen von Wässern",
+                    waterTypesSubtitle: "Unterschiedliche Wässer unterliegen verschiedenen Anforderungen und gesetzlichen Regelungen:",
+                    typeTrinkwasserTitle: "TRINKWASSER (LEITUNG) 🚰",
+                    typeTrinkwasserText: "Aus Grund- & Oberflächenwasser, Aufbereitung üblich. Geregelt durch die Trinkwasserverordnung (TrinkwV). Streng kontrolliert & sicher.",
+                    typeTafelwasserTitle: "TAFELWASSER 🧪",
+                    typeTafelwasserText: "Aufbereitete Trink- oder Mineralwässer, oft gemischt. Zusätze (z.B. Mineralsalze, Kohlensäure) erlaubt. Geregelt durch die Mineral- und Tafelwasserverordnung (MTVO).",
+                    typeQuellwasserTitle: "QUELLWASSER 🌊",
+                    typeQuellwasserText: "Aus unterirdischen Vorkommen, ursprünglich rein. Muss Trinkwasser-Standards erfüllen. Geregelt durch die Mineral- und Tafelwasserverordnung (MTVO).",
+                    typeMineralwasserTitle: "NATÜRLICHES MINERALWASSER 🏔️",
+                    typeMineralwasserText: "Ursprüngliche Reinheit aus geschützten Tiefenquellen, amtlich anerkannt, konstante Mineralisierung. Geregelt durch die Mineral- und Tafelwasserverordnung (MTVO).",
+                    typeHeilwasserTitle: "HEILWASSER 💊",
+                    typeHeilwasserText: "Nachgewiesene vorbeugende, lindernde oder heilende Wirkung. Gilt rechtlich als Arzneimittel und unterliegt dem Arzneimittelgesetz (AMG). Benötigt BfArM-Zulassung.",
+                    regulationsSummary: "Die Qualität der Wässer wird durch unterschiedliche Verordnungen geregelt: Trinkwasserverordnung (TrinkwV), Mineral- und Tafelwasserverordnung (MTVO) und für Heilwässer das Arzneimittelgesetz (AMG).",
+                    mineralOriginTitle: "🌱 Wie entsteht Natürliches Mineralwasser?",
+                    mineralOriginSubtitle: "Der lange Weg des Wassers durch die Erde zu seiner einzigartigen Reinheit und Mineralisierung:",
+                    mineralOriginImageCaption: "Darstellung aus dem Buch \"Erlebnis Hotel\", S. 295.",
+                    mineralOriginText: "Regenwasser sickert langsam durch verschiedene Gesteins- und Bodenschichten. Dabei wird es natürlich gefiltert und reichert sich mit wertvollen Mineralstoffen und Spurenelementen an. Aus geschützten Tiefenquellen wird dieses ursprünglich reine Wasser dann direkt als Natürliches Mineralwasser abgefüllt.",
+                    comparisonTitle: "⚖️ Trinkwasser vs. Natürliches Mineralwasser",
+                    comparisonHeader1: "Eigenschaft",
+                    comparisonHeader2: "Trinkwasser (Leitung)",
+                    comparisonHeader3: "Natürliches Mineralwasser",
+                    comparisonRow1Col1: "<strong>Herkunft</strong>",
+                    comparisonRow1Col2: "Überwiegend aus Grund- und Oberflächenwasser",
+                    comparisonRow1Col3: "Geschützte Tiefenquellen",
+                    comparisonRow2Col1: "<strong>Behandlung</strong>",
+                    comparisonRow2Col2: "Chemische Aufbereitung erlaubt",
+                    comparisonRow2Col3: "Nur geringe Ausnahmen erlaubt",
+                    comparisonRow3Col1: "<strong>Mineralien</strong>",
+                    comparisonRow3Col2: "Kann schwanken",
+                    comparisonRow3Col3: "Konstant (Etikett)",
+                    comparisonRow4Col1: "<strong>Gesetze</strong>",
+                    comparisonRow4Col2: "Trinkwasserverordnung (TrinkwV)",
+                    comparisonRow4Col3: "Mineral- und Tafelwasserverordnung (MTVO)",
+                    comparisonRow5Col1: "<strong>Reinheit</strong>",
+                    comparisonRow5Col2: "Rein und Genusstauglich",
+                    comparisonRow5Col3: "Ursprüngliche, unveränderte Reinheit",
+                    importantNote: "Wichtig zu wissen:",
+                    importantNoteText: "Deutsches Leitungswasser zählt global zu den am besten kontrollierten und qualitativ hochwertigsten überhaupt. Beide Wasserarten unterliegen strengen Qualitätskontrollen. Die Entscheidung liegt schlussendlich bei der Vorliebe des Konsumenten.",
+                    naturalMineralWaterTitle: "✨ Natürliches Mineralwasser: Besondere Merkmale",
+                    naturalMineralWaterFact1: "<strong>Ursprüngliche Reinheit:</strong> Direkt aus geschützter, unterirdischer Quelle.",
+                    naturalMineralWaterFact2: "<strong>Quellortabfüllung:</strong> Muss direkt an der Quelle abgefüllt werden.",
+                    naturalMineralWaterFact3: "<strong>Amtliche Anerkennung:</strong> Erfüllt strenge Kriterien, die in der Mineral- und Tafelwasserverordnung (MTVO) festgelegt sind. Bestätigt konstante Zusammensetzung & Reinheit.",
+                    naturalMineralWaterFact4: "<strong>Definierte Mineralisierung:</strong> Charakteristischer Gehalt (Etikett), ernährungsphysiologische Eigenschaften möglich.",
+                    naturalMineralWaterFact5: "<strong>Stark begrenzte Behandlung:</strong> Erlaubt sind nur das Zusetzen und Entfernen von Kohlensäure sowie das Entfernen von Schwefel und Eisen (damit es nicht schlecht riecht oder farblich braun aussieht).",
+                    waterIsLifeTitle: "🌍 Wasser ist Leben – Schützen wir es!",
+                    waterIsLifeText: "Wasser ist eine unserer wertvollsten Ressourcen. Ein bewusster Umgang hilft, seine Qualität und Verfügbarkeit für die Zukunft zu sichern. Bad Kissingen, als traditionsreicher Kurort, weiß um die Bedeutung reinen Wassers."
+                },
+                de_simple: { 
+                    mainTitle: "Bad Kissingen sagt: Wasser ist nicht immer gleich",
+                    mainSubtitle: "Lerne mehr über unser Wasser.",
+                    introText: "Wasser ist sehr wichtig für uns. In Bad Kissingen ist Wasser besonders wichtig. Aber Wasser ist nicht immer nur H<sub>2</sub>O. Es gibt große Unterschiede!",
+                    healthTitle: "💧 Wasser ist gut für dich",
+                    healthSubtitle: "Wasser ist wie Medizin für deinen Körper. Du brauchst es für:",
+                    healthBenefit1Title: "Körper-Wärme",
+                    healthBenefit1Text: "Hält dich warm oder kühl",
+                    healthBenefit2Title: "Körper-Motor",
+                    healthBenefit2Text: "Trinke jeden Tag 1,5-2 Liter",
+                    healthBenefit3Title: "Denken & Bewegen",
+                    healthBenefit3Text: "Hilft dir beim Lernen",
+                    h2oFormula: "Wasser ist H<sub>2</sub>O: zwei Teile Wasser-Stoff (H) und ein Teil Sauer-Stoff (O).",
+                    hardnessTitle: "💎 Hartes und weiches Wasser",
+                    hardnessSubtitle: "Viele oder wenige kleine Teile (Mineralien) im Wasser machen es hart oder weich. Das schmeckt man!",
+                    softWaterTitle: "WEICHES WASSER",
+                    softWaterText: "Wenig kleine Teile. Schmeckt oft langweilig. Ist gut für Tee oder Kaffee.",
+                    hardWaterTitle: "HARTES WASSER",
+                    hardWaterText: "Viele kleine Teile (Calcium, Magnesium). Schmeckt oft frisch. Macht aber Geräte kaputt (Kalk).",
+                    hardnessMeasurement: "<strong>Man misst das in °dH:</strong> Bis 4°dH = sehr weich; Über 21°dH = sehr hart.",
+                    waterTypesTitle: "🏔️ Verschiedene Wasser-Sorten",
+                    waterTypesSubtitle: "Es gibt verschiedene Regeln für Wasser:",
+                    typeTrinkwasserTitle: "TRINK-WASSER (aus dem Hahn) 🚰",
+                    typeTrinkwasserText: "Kommt aus Seen oder aus der Erde. Wird oft sauber gemacht. Die Regeln stehen in der Trinkwasser-Verordnung (TrinkwV). Ist sicher und gut.",
+                    typeTafelwasserTitle: "TAFEL-WASSER 🧪",
+                    typeTafelwasserText: "Ist oft gemischtes Wasser. Man darf Dinge dazu tun (Salze, Sprudel). Regeln stehen in der Mineral- und Tafelwasser-Verordnung (MTVO).",
+                    typeQuellwasserTitle: "QUELL-WASSER 🌊",
+                    typeQuellwasserText: "Kommt aus der Erde. Muss von Natur aus sauber sein und gut wie Trink-Wasser. Regeln in der Mineral- und Tafelwasser-Verordnung (MTVO).",
+                    typeMineralwasserTitle: "NATÜRLICHES MINERAL-WASSER 🏔️",
+                    typeMineralwasserText: "Sehr reines Wasser aus tiefen Quellen. Muss geprüft sein. Immer gleiche kleine Teile (Mineralien) drin. Regeln in der Mineral- und Tafelwasser-Verordnung (MTVO).",
+                    typeHeilwasserTitle: "HEIL-WASSER 💊",
+                    typeHeilwasserText: "Hilft bei Krankheiten. Ist wie Medizin. Regeln im Arznei-Mittel-Gesetz (AMG). Braucht Erlaubnis vom Amt (BfArM).",
+                    regulationsSummary: "Es gibt verschiedene Gesetze für Wasser: Trinkwasser-Verordnung (TrinkwV), Mineral- und Tafelwasser-Verordnung (MTVO) und das Arznei-Mittel-Gesetz (AMG) für Heil-Wasser.",
+                    mineralOriginTitle: "🌱 Wie wird Natürliches Mineral-Wasser gemacht?",
+                    mineralOriginSubtitle: "So kommt das Wasser rein und mit guten Teilen in die Flasche:",
+                    mineralOriginImageCaption: "Bild aus dem Buch \"Erlebnis Hotel\", S. 295.",
+                    mineralOriginText: "Regen fällt auf die Erde. Das Wasser geht langsam durch Steine und Erde. Dabei wird es sauber. Es nimmt gute kleine Teile (Mineralien) auf. Ganz tief in der Erde ist es dann reines Wasser. Das kommt dann in die Flaschen.",
+                    comparisonTitle: "⚖️ Trink-Wasser und Mineral-Wasser",
+                    comparisonHeader1: "Was?",
+                    comparisonHeader2: "Trink-Wasser (Hahn)",
+                    comparisonHeader3: "Natürliches Mineral-Wasser",
+                    comparisonRow1Col1: "<strong>Woher?</strong>",
+                    comparisonRow1Col2: "Meist aus Seen, Flüssen, Erde",
+                    comparisonRow1Col3: "Aus tiefen Quellen",
+                    comparisonRow2Col1: "<strong>Sauber machen?</strong>",
+                    comparisonRow2Col2: "Ja, oft mit Chemie",
+                    comparisonRow2Col3: "Nein, fast gar nicht",
+                    comparisonRow3Col1: "<strong>Kleine Teile (Mineralien)?</strong>",
+                    comparisonRow3Col2: "Mal mehr, mal weniger",
+                    comparisonRow3Col3: "Immer gleich viel (steht drauf)",
+                    comparisonRow4Col1: "<strong>Gesetze?</strong>",
+                    comparisonRow4Col2: "Trinkwasser-Verordnung (TrinkwV)",
+                    comparisonRow4Col3: "Mineral- und Tafelwasser-Verordnung (MTVO)",
+                    comparisonRow5Col1: "<strong>Rein?</strong>",
+                    comparisonRow5Col2: "Ja, und gut zum Trinken",
+                    comparisonRow5Col3: "Ja, von Natur aus rein",
+                    importantNote: "Wichtig:",
+                    importantNoteText: "Wasser aus dem Hahn in Deutschland ist sehr gut und sicher. Mineral-Wasser ist auch sehr gut. Du kannst trinken, was dir besser schmeckt.",
+                    naturalMineralWaterTitle: "✨ Was ist besonders an Natürlichem Mineral-Wasser?",
+                    naturalMineralWaterFact1: "<strong>Ganz rein:</strong> Kommt direkt aus einer geschützten Quelle tief in der Erde.",
+                    naturalMineralWaterFact2: "<strong>Direkt in die Flasche:</strong> Wird an der Quelle abgefüllt.",
+                    naturalMineralWaterFact3: "<strong>Geprüft vom Amt:</strong> Muss sehr strengen Regeln folgen (MTVO). Ist immer gleich gut.",
+                    naturalMineralWaterFact4: "<strong>Gute Teile drin:</strong> Hat bestimmte kleine Teile (Mineralien), die gut sein können.",
+                    naturalMineralWaterFact5: "<strong>Wenig gemacht:</strong> Man darf nur Sprudel rein oder raus tun. Oder Schwefel und Eisen raus, damit es gut schmeckt und aussieht.",
+                    waterIsLifeTitle: "🌍 Wasser ist Leben – Pass gut darauf auf!",
+                    waterIsLifeText: "Wasser ist sehr kostbar. Wir müssen aufpassen, dass wir immer genug sauberes Wasser haben. Bad Kissingen weiß das, denn es ist ein Kur-Ort."
+                },
+                vn: { 
+                    mainTitle: "Bad Kissingen thông báo: Nước không phải lúc nào cũng giống nhau",
+                    mainSubtitle: "Khám phá sự đa dạng và tầm quan trọng của nguồn sống thiết yếu này.",
+                    introText: "Nước là nền tảng của mọi sự sống và đóng vai trò trung tâm, đặc biệt tại một thị trấn nghỉ dưỡng như Bad Kissingen. Nhưng nước không chỉ đơn thuần là H<sub>2</sub>O – có những khác biệt đáng kinh ngạc!",
+                    healthTitle: "💧 Nước đối với sức khỏe của bạn",
+                    healthSubtitle: "Nước là một nguồn sức khỏe thực sự. Nó rất cần thiết cho:",
+                    healthBenefit1Title: "Nhiệt độ cơ thể",
+                    healthBenefit1Text: "Điều hòa & ổn định",
+                    healthBenefit2Title: "Trao đổi chất",
+                    healthBenefit2Text: "1,5-2 lít mỗi ngày để hoạt động tối ưu",
+                    healthBenefit3Title: "Hiệu suất",
+                    healthBenefit3Text: "Hỗ trợ sự tập trung",
+                    h2oFormula: "Công thức đơn giản của nước là H<sub>2</sub>O: hai nguyên tử hydro (H) và một nguyên tử oxy (O).",
+                    hardnessTitle: "💎 Độ cứng của nước: Mềm vs. Cứng",
+                    hardnessSubtitle: "Hàm lượng khoáng chất như canxi và magiê quyết định độ cứng. Các khoáng chất hòa tan trong đó tạo nên sự khác biệt về hương vị và tính chất!",
+                    softWaterTitle: "NƯỚC MỀM",
+                    softWaterText: "Ít khoáng chất. Thường có vị nhạt (không đậm đà), nhưng có khả năng hòa tan lớn và do đó tốt cho trà/cà phê.",
+                    hardWaterTitle: "NƯỚC CỨNG",
+                    hardWaterText: "Nhiều khoáng chất (Ca, Mg). Thường có vị tươi mát, tuy nhiên làm đóng cặn thiết bị, thùng chứa và đường ống.",
+                    hardnessMeasurement: "<strong>Đo bằng °dH (độ cứng của Đức):</strong> Đến 4°dH = rất mềm; Trên 21°dH = rất cứng.",
+                    waterTypesTitle: "🏔️ Các cấp chất lượng của nước",
+                    waterTypesSubtitle: "Các loại nước khác nhau phải tuân theo các yêu cầu và quy định pháp lý khác nhau:",
+                    typeTrinkwasserTitle: "NƯỚC UỐNG (NƯỚC MÁY) 🚰",
+                    typeTrinkwasserText: "Từ nước ngầm & nước mặt, thường được xử lý. Được quy định bởi Quy định về Nước uống (TrinkwV). Kiểm soát chặt chẽ & an toàn.",
+                    typeTafelwasserTitle: "NƯỚC ĐÓNG CHAI (TAFELWASSER) 🧪",
+                    typeTafelwasserText: "Nước uống hoặc nước khoáng đã qua xử lý, thường được pha trộn. Cho phép thêm phụ gia (ví dụ: muối khoáng, carbon dioxide). Được quy định bởi Quy định về Nước khoáng và Nước đóng chai (MTVO).",
+                    typeQuellwasserTitle: "NƯỚC SUỐI 🌊",
+                    typeQuellwasserText: "Từ các nguồn nước ngầm, tinh khiết tự nhiên. Phải đáp ứng tiêu chuẩn nước uống. Được quy định bởi Quy định về Nước khoáng và Nước đóng chai (MTVO).",
+                    typeMineralwasserTitle: "NƯỚC KHOÁNG THIÊN NHIÊN 🏔️",
+                    typeMineralwasserText: "Độ tinh khiết tự nhiên từ các nguồn sâu được bảo vệ, được công nhận chính thức, hàm lượng khoáng chất ổn định. Được quy định bởi Quy định về Nước khoáng và Nước đóng chai (MTVO).",
+                    typeHeilwasserTitle: "NƯỚC CHỮA BỆNH 💊",
+                    typeHeilwasserText: "Có tác dụng phòng ngừa, làm dịu hoặc chữa bệnh đã được chứng minh. Về mặt pháp lý được coi là một loại thuốc và tuân theo Luật Dược phẩm (AMG). Cần có giấy phép của BfArM.",
+                    regulationsSummary: "Chất lượng nước được quy định bởi các quy định khác nhau: Quy định về Nước uống (TrinkwV), Quy định về Nước khoáng và Nước đóng chai (MTVO) và Luật Dược phẩm (AMG) đối với nước chữa bệnh.",
+                    mineralOriginTitle: "🌱 Nước Khoáng Thiên Nhiên Hình Thành Như Thế Nào?",
+                    mineralOriginSubtitle: "Hành trình dài của nước qua lòng đất để đạt được độ tinh khiết và hàm lượng khoáng độc đáo:",
+                    mineralOriginImageCaption: "Minh họa từ sách \"Erlebnis Hotel\", trang 295.",
+                    mineralOriginText: "Nước mưa từ từ thấm qua các lớp đá và đất khác nhau. Trong quá trình này, nó được lọc tự nhiên và làm giàu các khoáng chất và nguyên tố vi lượng có giá trị. Từ các nguồn sâu được bảo vệ, loại nước tinh khiết tự nhiên này sau đó được đóng chai trực tiếp thành Nước Khoáng Thiên Nhiên.",
+                    comparisonTitle: "⚖️ Nước Uống vs. Nước Khoáng Thiên Nhiên",
+                    comparisonHeader1: "Đặc điểm",
+                    comparisonHeader2: "Nước Uống (Nước máy)",
+                    comparisonHeader3: "Nước Khoáng Thiên Nhiên",
+                    comparisonRow1Col1: "<strong>Nguồn gốc</strong>",
+                    comparisonRow1Col2: "Chủ yếu từ nước ngầm và nước mặt",
+                    comparisonRow1Col3: "Các nguồn sâu được bảo vệ",
+                    comparisonRow2Col1: "<strong>Xử lý</strong>",
+                    comparisonRow2Col2: "Cho phép xử lý hóa học",
+                    comparisonRow2Col3: "Chỉ cho phép một vài ngoại lệ nhỏ",
+                    comparisonRow3Col1: "<strong>Khoáng chất</strong>",
+                    comparisonRow3Col2: "Có thể thay đổi",
+                    comparisonRow3Col3: "Ổn định (ghi trên nhãn)",
+                    comparisonRow4Col1: "<strong>Luật</strong>",
+                    comparisonRow4Col2: "Quy định về Nước uống (TrinkwV)",
+                    comparisonRow4Col3: "Quy định về Nước khoáng và Nước đóng chai (MTVO)",
+                    comparisonRow5Col1: "<strong>Độ tinh khiết</strong>",
+                    comparisonRow5Col2: "Tinh khiết và phù hợp để uống",
+                    comparisonRow5Col3: "Độ tinh khiết tự nhiên, không thay đổi",
+                    importantNote: "Điều quan trọng cần biết:",
+                    importantNoteText: "Nước máy của Đức là một trong những loại được kiểm soát tốt nhất và có chất lượng cao nhất trên toàn cầu. Cả hai loại nước đều phải tuân theo các biện pháp kiểm soát chất lượng nghiêm ngặt. Quyết định cuối cùng phụ thuộc vào sở thích của người tiêu dùng.",
+                    naturalMineralWaterTitle: "✨ Nước Khoáng Thiên Nhiên: Đặc Điểm Đặc Biệt",
+                    naturalMineralWaterFact1: "<strong>Độ tinh khiết tự nhiên:</strong> Trực tiếp từ nguồn nước ngầm được bảo vệ.",
+                    naturalMineralWaterFact2: "<strong>Đóng chai tại nguồn:</strong> Phải được đóng chai trực tiếp tại nguồn.",
+                    naturalMineralWaterFact3: "<strong>Công nhận chính thức:</strong> Đáp ứng các tiêu chí nghiêm ngặt được quy định trong Quy định về Nước khoáng và Nước đóng chai (MTVO). Xác nhận thành phần ổn định & độ tinh khiết.",
+                    naturalMineralWaterFact4: "<strong>Hàm lượng khoáng xác định:</strong> Hàm lượng đặc trưng (ghi trên nhãn), có thể có các đặc tính dinh dưỡng.",
+                    naturalMineralWaterFact5: "<strong>Xử lý hạn chế nghiêm ngặt:</strong> Chỉ cho phép thêm và loại bỏ carbon dioxide, cũng như loại bỏ lưu huỳnh và sắt (để nước không có mùi khó chịu hoặc có màu nâu).",
+                    waterIsLifeTitle: "🌍 Nước là Sự Sống – Hãy Bảo Vệ Nó!",
+                    waterIsLifeText: "Nước là một trong những tài nguyên quý giá nhất của chúng ta. Sử dụng có ý thức giúp đảm bảo chất lượng và sự sẵn có của nó cho tương lai. Bad Kissingen, một thị trấn spa truyền thống, hiểu rõ tầm quan trọng của nước tinh khiết."
+                },
+                en: { 
+                    mainTitle: "Bad Kissingen informs: Water is not just water",
+                    mainSubtitle: "Discover the diversity and importance of our elixir of life.",
+                    introText: "Water is the foundation of all life and plays a central role, especially in a spa town like Bad Kissingen. But water is not just H<sub>2</sub>O – there are astonishing differences!",
+                    healthTitle: "💧 Water for Your Health",
+                    healthSubtitle: "Water is a true fountain of health. It is essential for:",
+                    healthBenefit1Title: "Body Temperature",
+                    healthBenefit1Text: "Regulation & Stability",
+                    healthBenefit2Title: "Metabolism",
+                    healthBenefit2Text: "1.5-2 liters daily for optimal function",
+                    healthBenefit3Title: "Performance",
+                    healthBenefit3Text: "Supports concentration",
+                    h2oFormula: "The simple formula for water is H<sub>2</sub>O: two hydrogen atoms (H) and one oxygen atom (O).",
+                    hardnessTitle: "💎 Water Hardness: Soft vs. Hard",
+                    hardnessSubtitle: "The content of minerals like calcium and magnesium determines the hardness. The dissolved minerals therein make the difference in taste and behavior!",
+                    softWaterTitle: "SOFT WATER",
+                    softWaterText: "Few minerals. Often tastes bland (flat), but has great solvent power and is therefore good for tea/coffee.",
+                    hardWaterTitle: "HARD WATER",
+                    hardWaterText: "Many minerals (Ca, Mg). Often tastes fresh, but calcifies appliances, containers, and pipes.",
+                    hardnessMeasurement: "<strong>Measurement in °dH (German degrees of hardness):</strong> Up to 4°dH = very soft; Over 21°dH = very hard.",
+                    waterTypesTitle: "🏔️ Quality Levels of Waters",
+                    waterTypesSubtitle: "Different waters are subject to various requirements and legal regulations:",
+                    typeTrinkwasserTitle: "DRINKING WATER (TAP) 🚰",
+                    typeTrinkwasserText: "From groundwater & surface water, treatment is common. Regulated by the Drinking Water Ordinance (TrinkwV). Strictly controlled & safe.",
+                    typeTafelwasserTitle: "TABLE WATER 🧪",
+                    typeTafelwasserText: "Treated drinking or mineral waters, often mixed. Additives (e.g., mineral salts, carbonic acid) allowed. Regulated by the Mineral and Table Water Ordinance (MTVO).",
+                    typeQuellwasserTitle: "SPRING WATER 🌊",
+                    typeQuellwasserText: "From underground sources, originally pure. Must meet drinking water standards. Regulated by the Mineral and Table Water Ordinance (MTVO).",
+                    typeMineralwasserTitle: "NATURAL MINERAL WATER 🏔️",
+                    typeMineralwasserText: "Original purity from protected deep springs, officially recognized, constant mineralization. Regulated by the Mineral and Table Water Ordinance (MTVO).",
+                    typeHeilwasserTitle: "MEDICINAL WATER 💊",
+                    typeHeilwasserText: "Proven preventive, alleviating, or healing effects. Legally considered a medicinal product and subject to the Medicines Act (AMG). Requires BfArM approval.",
+                    regulationsSummary: "The quality of waters is regulated by different ordinances: Drinking Water Ordinance (TrinkwV), Mineral and Table Water Ordinance (MTVO), and for medicinal waters, the Medicines Act (AMG).",
+                    mineralOriginTitle: "🌱 How is Natural Mineral Water Formed?",
+                    mineralOriginSubtitle: "The long journey of water through the earth to its unique purity and mineralization:",
+                    mineralOriginImageCaption: "Illustration from the book \"Erlebnis Hotel\", p. 295.",
+                    mineralOriginText: "Rainwater slowly seeps through various rock and soil layers. In this process, it is naturally filtered and enriched with valuable minerals and trace elements. This originally pure water is then bottled directly from protected deep springs as Natural Mineral Water.",
+                    comparisonTitle: "⚖️ Drinking Water vs. Natural Mineral Water",
+                    comparisonHeader1: "Property",
+                    comparisonHeader2: "Drinking Water (Tap)",
+                    comparisonHeader3: "Natural Mineral Water",
+                    comparisonRow1Col1: "<strong>Origin</strong>",
+                    comparisonRow1Col2: "Predominantly from ground and surface water",
+                    comparisonRow1Col3: "Protected deep springs",
+                    comparisonRow2Col1: "<strong>Treatment</strong>",
+                    comparisonRow2Col2: "Chemical treatment allowed",
+                    comparisonRow2Col3: "Only minor exceptions allowed",
+                    comparisonRow3Col1: "<strong>Minerals</strong>",
+                    comparisonRow3Col2: "Can vary",
+                    comparisonRow3Col3: "Constant (label)",
+                    comparisonRow4Col1: "<strong>Laws</strong>",
+                    comparisonRow4Col2: "Drinking Water Ordinance (TrinkwV)",
+                    comparisonRow4Col3: "Mineral and Table Water Ordinance (MTVO)",
+                    comparisonRow5Col1: "<strong>Purity</strong>",
+                    comparisonRow5Col2: "Pure and fit for consumption",
+                    comparisonRow5Col3: "Original, unchanged purity",
+                    importantNote: "Important to know:",
+                    importantNoteText: "German tap water is among the best controlled and highest quality globally. Both types of water are subject to strict quality controls. The decision ultimately lies with the consumer's preference.",
+                    naturalMineralWaterTitle: "✨ Natural Mineral Water: Special Features",
+                    naturalMineralWaterFact1: "<strong>Original Purity:</strong> Directly from a protected, underground source.",
+                    naturalMineralWaterFact2: "<strong>Bottling at Source:</strong> Must be bottled directly at the source.",
+                    naturalMineralWaterFact3: "<strong>Official Recognition:</strong> Meets strict criteria set out in the Mineral and Table Water Ordinance (MTVO). Confirms constant composition & purity.",
+                    naturalMineralWaterFact4: "<strong>Defined Mineralization:</strong> Characteristic content (label), possible nutritional-physiological properties.",
+                    naturalMineralWaterFact5: "<strong>Strictly Limited Treatment:</strong> Only the addition and removal of carbonic acid, as well as the removal of sulfur and iron (so it doesn't smell bad or look brown) are permitted.",
+                    waterIsLifeTitle: "🌍 Water is Life – Let's Protect It!",
+                    waterIsLifeText: "Water is one of our most valuable resources. Conscious use helps to secure its quality and availability for the future. Bad Kissingen, as a traditional spa town, knows the importance of pure water."
+                }
+            };
+
+            const langButtons = document.querySelectorAll('.lang-btn');
+            const translatableElements = document.querySelectorAll('[data-translate]');
+            const translatablePlaceholders = document.querySelectorAll('[data-translate-placeholder]');
+
+
+            function translatePage(lang) {
+                translatableElements.forEach(element => {
+                    const key = element.dataset.translate;
+                    if (translations[lang] && translations[lang][key]) {
+                        element.innerHTML = translations[lang][key];
+                    } else if (translations.de[key]) { 
+                         element.innerHTML = translations.de[key];
+                    }
+                });
+                translatablePlaceholders.forEach(element => {
+                    const key = element.dataset.translatePlaceholder;
+                     if (translations[lang] && translations[lang][key]) {
+                        element.placeholder = translations[lang][key];
+                    } else if (translations.de[key]) { 
+                        element.placeholder = translations.de[key];
+                    }
+                });
+            }
+            
+            let currentLang = 'de';
+            const activeLangButton = document.querySelector('.lang-btn.active');
+            if (activeLangButton) {
+                currentLang = activeLangButton.dataset.lang;
+            }
+            translatePage(currentLang);
+
+
+            langButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    currentLang = this.dataset.lang; 
+                    
+                    langButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    translatePage(currentLang);
+                });
+            });
+
+            // AI Expert Section Logic has been removed.
+        });
+    </script>
+</body>
+</html>
