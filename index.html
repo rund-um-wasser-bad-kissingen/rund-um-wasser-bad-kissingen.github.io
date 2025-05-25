@@ -96,9 +96,10 @@
             font-weight: bold;
             margin-bottom: 8px;
         }
-        .water-type-card p {
+        .water-type-card p { /* Ensure line breaks are rendered */
             font-size: 0.8rem;
             opacity: 0.95;
+            white-space: pre-line;
         }
         .type-heilwasser { background: linear-gradient(45deg, #c0392b, #e74c3c); }
         .type-mineralwasser { background: linear-gradient(45deg, #e67e22, #f39c12); }
@@ -361,7 +362,7 @@
                 </div>
                 <div class="water-type-card type-heilwasser">
                     <h3 data-translate="typeHeilwasserTitle">HEILWASSER 💊</h3>
-                    <p data-translate="typeHeilwasserText">Nachgewiesene vorbeugende, lindernde oder heilende Wirkung. Gilt rechtlich als Arzneimittel und unterliegt dem Arzneimittelgesetz (AMG). Benötigt BfArM-Zulassung.</p>
+                    <p data-translate="typeHeilwasserText">Nachgewiesene vorbeugende, lindernde oder heilende Wirkung. Gilt rechtlich als Arzneimittel und unterliegt dem Arzneimittelgesetz (AMG).</p>
                 </div>
             </div>
              <p class="text-xs text-center mt-4 text-slate-500" data-translate="regulationsSummary">Die Qualität der Wässer wird durch unterschiedliche Verordnungen geregelt: Trinkwasserverordnung (TrinkwV), Mineral- und Tafelwasserverordnung (MTVO) und für Heilwässer das Arzneimittelgesetz (AMG).</p>
@@ -483,7 +484,7 @@
                     typeMineralwasserTitle: "NATÜRLICHES MINERALWASSER 🏔️",
                     typeMineralwasserText: "Ursprüngliche Reinheit aus geschützten Tiefenquellen, amtlich anerkannt, konstante Mineralisierung. Geregelt durch die Mineral- und Tafelwasserverordnung (MTVO).",
                     typeHeilwasserTitle: "HEILWASSER 💊",
-                    typeHeilwasserText: "Nachgewiesene vorbeugende, lindernde oder heilende Wirkung. Gilt rechtlich als Arzneimittel und unterliegt dem Arzneimittelgesetz (AMG). Benötigt BfArM-Zulassung.",
+                    typeHeilwasserText: "Nachgewiesene vorbeugende, lindernde oder heilende Wirkung. Gilt rechtlich als Arzneimittel und unterliegt dem Arzneimittelgesetz (AMG).",
                     regulationsSummary: "Die Qualität der Wässer wird durch unterschiedliche Verordnungen geregelt: Trinkwasserverordnung (TrinkwV), Mineral- und Tafelwasserverordnung (MTVO) und für Heilwässer das Arzneimittelgesetz (AMG).",
                     mineralOriginTitle: "🌱 Wie entsteht Natürliches Mineralwasser?",
                     mineralOriginSubtitle: "Der lange Weg des Wassers durch die Erde zu seiner einzigartigen Reinheit und Mineralisierung:",
@@ -520,71 +521,71 @@
                     waterIsLifeText: "Wasser ist eine unserer wertvollsten Ressourcen. Ein bewusster Umgang hilft, seine Qualität und Verfügbarkeit für die Zukunft zu sichern. Bad Kissingen, als traditionsreicher Kurort, weiß um die Bedeutung reinen Wassers."
                 },
                 de_simple: { 
-                    mainTitle: "Bad Kissingen sagt: Wasser ist nicht immer gleich",
-                    mainSubtitle: "Lerne mehr über unser Wasser.",
+                    mainTitle: "Bad Kissingen informiert: Wasser ist nicht immer gleich",
+                    mainSubtitle: "Mehr über unser Wasser erfahren.",
                     introText: "Wasser ist sehr wichtig für uns. In Bad Kissingen ist Wasser besonders wichtig. Aber Wasser ist nicht immer nur H<sub>2</sub>O. Es gibt große Unterschiede!",
-                    healthTitle: "💧 Wasser ist gut für dich",
-                    healthSubtitle: "Wasser ist wie Medizin für deinen Körper. Du brauchst es für:",
-                    healthBenefit1Title: "Körper-Wärme",
-                    healthBenefit1Text: "Hält dich warm oder kühl",
-                    healthBenefit2Title: "Körper-Motor",
-                    healthBenefit2Text: "Trinke jeden Tag 1,5-2 Liter",
+                    healthTitle: "💧 Wasser für Ihre Gesundheit",
+                    healthSubtitle: "Wasser ist gut für den Körper. Es ist sehr wichtig für:",
+                    healthBenefit1Title: "Körperwärme",
+                    healthBenefit1Text: "Hält den Körper warm oder kühl.",
+                    healthBenefit2Title: "Stoffwechsel",
+                    healthBenefit2Text: "Täglich 1,5 bis 2 Liter trinken.",
                     healthBenefit3Title: "Denken & Bewegen",
-                    healthBenefit3Text: "Hilft dir beim Lernen",
-                    h2oFormula: "Wasser ist H<sub>2</sub>O: zwei Teile Wasser-Stoff (H) und ein Teil Sauer-Stoff (O).",
-                    hardnessTitle: "💎 Hartes und weiches Wasser",
-                    hardnessSubtitle: "Viele oder wenige kleine Teile (Mineralien) im Wasser machen es hart oder weich. Das schmeckt man!",
+                    healthBenefit3Text: "Hilft beim Lernen.",
+                    h2oFormula: "Wasser ist H<sub>2</sub>O: zwei Teile Wasserstoff (H) und ein Teil Sauerstoff (O).",
+                    hardnessTitle: "💎 Wasserhärte: Weich vs. Hart",
+                    hardnessSubtitle: "Viele oder wenige kleine Stoffe (Mineralien) im Wasser machen es hart oder weich. Das schmeckt man!",
                     softWaterTitle: "WEICHES WASSER",
-                    softWaterText: "Wenig kleine Teile. Schmeckt oft langweilig. Ist gut für Tee oder Kaffee.",
+                    softWaterText: "Wenig Mineralien. Schmeckt oft neutral, besitzt aber große Lösungskraft und ist daher gut für Tee/Kaffee.",
                     hardWaterTitle: "HARTES WASSER",
-                    hardWaterText: "Viele kleine Teile (Calcium, Magnesium). Schmeckt oft frisch. Macht aber Geräte kaputt (Kalk).",
-                    hardnessMeasurement: "<strong>Man misst das in °dH:</strong> Bis 4°dH = sehr weich; Über 21°dH = sehr hart.",
-                    waterTypesTitle: "🏔️ Verschiedene Wasser-Sorten",
-                    waterTypesSubtitle: "Es gibt verschiedene Regeln für Wasser:",
-                    typeTrinkwasserTitle: "TRINK-WASSER (aus dem Hahn) 🚰",
-                    typeTrinkwasserText: "Kommt aus Seen oder aus der Erde. Wird oft sauber gemacht. Die Regeln stehen in der Trinkwasser-Verordnung (TrinkwV). Ist sicher und gut.",
-                    typeTafelwasserTitle: "TAFEL-WASSER 🧪",
-                    typeTafelwasserText: "Ist oft gemischtes Wasser. Man darf Dinge dazu tun (Salze, Sprudel). Regeln stehen in der Mineral- und Tafelwasser-Verordnung (MTVO).",
-                    typeQuellwasserTitle: "QUELL-WASSER 🌊",
-                    typeQuellwasserText: "Kommt aus der Erde. Muss von Natur aus sauber sein und gut wie Trink-Wasser. Regeln in der Mineral- und Tafelwasser-Verordnung (MTVO).",
-                    typeMineralwasserTitle: "NATÜRLICHES MINERAL-WASSER 🏔️",
-                    typeMineralwasserText: "Sehr reines Wasser aus tiefen Quellen. Muss geprüft sein. Immer gleiche kleine Teile (Mineralien) drin. Regeln in der Mineral- und Tafelwasser-Verordnung (MTVO).",
-                    typeHeilwasserTitle: "HEIL-WASSER 💊",
-                    typeHeilwasserText: "Hilft bei Krankheiten. Ist wie Medizin. Regeln im Arznei-Mittel-Gesetz (AMG). Braucht Erlaubnis vom Amt (BfArM).",
-                    regulationsSummary: "Es gibt verschiedene Gesetze für Wasser: Trinkwasser-Verordnung (TrinkwV), Mineral- und Tafelwasser-Verordnung (MTVO) und das Arznei-Mittel-Gesetz (AMG) für Heil-Wasser.",
-                    mineralOriginTitle: "🌱 Wie wird Natürliches Mineral-Wasser gemacht?",
-                    mineralOriginSubtitle: "So kommt das Wasser rein und mit guten Teilen in die Flasche:",
+                    hardWaterText: "Viele Mineralien (Ca, Mg). Schmeckt oft frisch, hinterlässt jedoch Rückstände (Kalk) an Geräten, Behältern und Rohren.",
+                    hardnessMeasurement: "<strong>Messung in °dH (deutschen Härtegraden):</strong> Bis 4°dH = sehr weich; Über 21°dH = sehr hart.",
+                    waterTypesTitle: "🏔️ Qualitätsstufen von Wässern",
+                    waterTypesSubtitle: "Wässer müssen verschiedene Regeln und Gesetze erfüllen. Hier sind die wichtigsten Wasserarten:",
+                    typeTrinkwasserTitle: "TRINKWASSER (LEITUNG) 🚰",
+                    typeTrinkwasserText: "• Wird aus Grund- oder Oberflächenwasser gewonnen.\n• Eine Aufbereitung (Reinigung) ist normal.\n• Die Regeln dafür stehen in der Trinkwasserverordnung (TrinkwV).\n• Es wird streng kontrolliert und ist sicher.",
+                    typeTafelwasserTitle: "TAFELWASSER 🧪",
+                    typeTafelwasserText: "• Besteht aus aufbereitetem Trink- oder Mineralwasser, oft gemischt.\n• Man darf Zusätze wie Mineralsalze oder Kohlensäure hinzufügen.\n• Es wird durch die Mineral- und Tafelwasserverordnung (MTVO) geregelt.",
+                    typeQuellwasserTitle: "QUELLWASSER 🌊",
+                    typeQuellwasserText: "• Kommt aus unterirdischen Quellen und ist von Natur aus rein.\n• Es muss die Qualitätsstandards von Trinkwasser erfüllen.\n• Die Regeln dafür stehen in der Mineral- und Tafelwasserverordnung (MTVO).",
+                    typeMineralwasserTitle: "NATÜRLICHES MINERALWASSER 🏔️",
+                    typeMineralwasserText: "• Kommt ursprünglich rein aus geschützten, tiefen Quellen.\n• Es ist amtlich anerkannt und hat eine gleichbleibende Mineralisierung.\n• Geregelt wird es durch die Mineral- und Tafelwasserverordnung (MTVO).",
+                    typeHeilwasserTitle: "HEILWASSER 💊",
+                    typeHeilwasserText: "• Hat eine nachweisbare Wirkung, die vorbeugt, lindert oder heilt.\n• Rechtlich gilt es als Arzneimittel und unterliegt dem Arzneimittelgesetz (AMG).",
+                    regulationsSummary: "Die Qualität der verschiedenen Wasserarten wird also durch unterschiedliche Gesetze bestimmt: die Trinkwasserverordnung (TrinkwV), die Mineral- und Tafelwasserverordnung (MTVO) und für Heilwässer das Arzneimittelgesetz (AMG).",
+                    mineralOriginTitle: "🌱 Wie entsteht Natürliches Mineralwasser?",
+                    mineralOriginSubtitle: "Der lange Weg des Wassers durch die Erde zu seiner einzigartigen Reinheit und Mineralisierung:",
                     mineralOriginImageCaption: "Bild aus dem Buch \"Erlebnis Hotel\", S. 295.",
                     mineralOriginText: "Regen fällt auf die Erde. Das Wasser geht langsam durch Steine und Erde. Dabei wird es sauber. Es nimmt gute kleine Teile (Mineralien) auf. Ganz tief in der Erde ist es dann reines Wasser. Das kommt dann in die Flaschen.",
-                    comparisonTitle: "⚖️ Trink-Wasser und Mineral-Wasser",
-                    comparisonHeader1: "Was?",
-                    comparisonHeader2: "Trink-Wasser (Hahn)",
-                    comparisonHeader3: "Natürliches Mineral-Wasser",
-                    comparisonRow1Col1: "<strong>Woher?</strong>",
-                    comparisonRow1Col2: "Meist aus Seen, Flüssen, Erde",
+                    comparisonTitle: "⚖️ Trinkwasser vs. Natürliches Mineralwasser",
+                    comparisonHeader1: "Eigenschaft",
+                    comparisonHeader2: "Trinkwasser (Leitung)",
+                    comparisonHeader3: "Natürliches Mineralwasser",
+                    comparisonRow1Col1: "<strong>Herkunft</strong>",
+                    comparisonRow1Col2: "Überwiegend aus Grund- und Oberflächenwasser",
                     comparisonRow1Col3: "Aus tiefen Quellen",
-                    comparisonRow2Col1: "<strong>Sauber machen?</strong>",
+                    comparisonRow2Col1: "<strong>Behandlung</strong>",
                     comparisonRow2Col2: "Ja, oft mit Chemie",
                     comparisonRow2Col3: "Nein, fast gar nicht",
-                    comparisonRow3Col1: "<strong>Kleine Teile (Mineralien)?</strong>",
+                    comparisonRow3Col1: "<strong>Mineralien</strong>",
                     comparisonRow3Col2: "Mal mehr, mal weniger",
                     comparisonRow3Col3: "Immer gleich viel (steht drauf)",
-                    comparisonRow4Col1: "<strong>Gesetze?</strong>",
-                    comparisonRow4Col2: "Trinkwasser-Verordnung (TrinkwV)",
-                    comparisonRow4Col3: "Mineral- und Tafelwasser-Verordnung (MTVO)",
-                    comparisonRow5Col1: "<strong>Rein?</strong>",
+                    comparisonRow4Col1: "<strong>Gesetze</strong>",
+                    comparisonRow4Col2: "Trinkwasserverordnung (TrinkwV)",
+                    comparisonRow4Col3: "Mineral- und Tafelwasserverordnung (MTVO)",
+                    comparisonRow5Col1: "<strong>Reinheit</strong>",
                     comparisonRow5Col2: "Ja, und gut zum Trinken",
                     comparisonRow5Col3: "Ja, von Natur aus rein",
                     importantNote: "Wichtig:",
-                    importantNoteText: "Wasser aus dem Hahn in Deutschland ist sehr gut und sicher. Mineral-Wasser ist auch sehr gut. Du kannst trinken, was dir besser schmeckt.",
-                    naturalMineralWaterTitle: "✨ Was ist besonders an Natürlichem Mineral-Wasser?",
-                    naturalMineralWaterFact1: "<strong>Ganz rein:</strong> Kommt direkt aus einer geschützten Quelle tief in der Erde.",
-                    naturalMineralWaterFact2: "<strong>Direkt in die Flasche:</strong> Wird an der Quelle abgefüllt.",
-                    naturalMineralWaterFact3: "<strong>Geprüft vom Amt:</strong> Muss sehr strengen Regeln folgen (MTVO). Ist immer gleich gut.",
-                    naturalMineralWaterFact4: "<strong>Gute Teile drin:</strong> Hat bestimmte kleine Teile (Mineralien), die gut sein können.",
-                    naturalMineralWaterFact5: "<strong>Wenig gemacht:</strong> Man darf nur Sprudel rein oder raus tun. Oder Schwefel und Eisen raus, damit es gut schmeckt und aussieht.",
-                    waterIsLifeTitle: "🌍 Wasser ist Leben – Pass gut darauf auf!",
-                    waterIsLifeText: "Wasser ist sehr kostbar. Wir müssen aufpassen, dass wir immer genug sauberes Wasser haben. Bad Kissingen weiß das, denn es ist ein Kur-Ort."
+                    importantNoteText: "Deutsches Leitungswasser ist weltweit besonders gut geprüft und von hoher Qualität. Auch Natürliche Mineralwässer sind sehr gut und sicher. Am Ende entscheidet die Vorliebe des Konsumenten, welches Wasser am besten passt.",
+                    naturalMineralWaterTitle: "✨ Natürliches Mineralwasser: Das macht es besonders",
+                    naturalMineralWaterFact1: "Von Natur aus rein: Es kommt direkt aus einer geschützten Quelle tief im Boden. Dort ist es ganz sauber.",
+                    naturalMineralWaterFact2: "Direkt abgefüllt: Das Wasser wird genau dort, wo es aus der Erde kommt, in Flaschen gefüllt. Es wird nicht erst weit transportiert.",
+                    naturalMineralWaterFact3: "Offiziell anerkannt: Es muss strenge Regeln erfüllen, die in der Mineral- und Tafelwasserverordnung stehen. So ist sicher, dass das Wasser immer die gleiche Reinheit und die gleichen Mineralien hat.",
+                    naturalMineralWaterFact4: "Besondere Mineralien: Es enthält bestimmte Mengen an Mineralien, die auf dem Etikett stehen. Diese Mineralien können dem Körper guttun.",
+                    naturalMineralWaterFact5: "Kaum verändert: Erlaubt ist nur, Kohlensäure hinzuzufügen oder zu entfernen. Manchmal darf man auch Schwefel oder Eisen herausnehmen, damit es nicht komisch riecht oder braun wird.",
+                    waterIsLifeTitle: "🌍 Wasser ist Leben – Schützen wir es!",
+                    waterIsLifeText: "Wasser ist etwas sehr Wertvolles. Wenn wir bewusst damit umgehen, helfen wir, dass es auch für die Zukunft sauber bleibt und immer genug da ist. In Bad Kissingen, als Kurort mit langer Geschichte, wissen wir ganz genau, wie wichtig reines Wasser ist."
                 },
                 vn: { 
                     mainTitle: "Bad Kissingen thông báo: Nước không phải lúc nào cũng giống nhau",
@@ -617,7 +618,7 @@
                     typeMineralwasserTitle: "NƯỚC KHOÁNG THIÊN NHIÊN 🏔️",
                     typeMineralwasserText: "Độ tinh khiết tự nhiên từ các nguồn sâu được bảo vệ, được công nhận chính thức, hàm lượng khoáng chất ổn định. Được quy định bởi Quy định về Nước khoáng và Nước đóng chai (MTVO).",
                     typeHeilwasserTitle: "NƯỚC CHỮA BỆNH 💊",
-                    typeHeilwasserText: "Có tác dụng phòng ngừa, làm dịu hoặc chữa bệnh đã được chứng minh. Về mặt pháp lý được coi là một loại thuốc và tuân theo Luật Dược phẩm (AMG). Cần có giấy phép của BfArM.",
+                    typeHeilwasserText: "Có tác dụng phòng ngừa, làm dịu hoặc chữa bệnh đã được chứng minh. Về mặt pháp lý được coi là một loại thuốc và tuân theo Luật Dược phẩm (AMG).",
                     regulationsSummary: "Chất lượng nước được quy định bởi các quy định khác nhau: Quy định về Nước uống (TrinkwV), Quy định về Nước khoáng và Nước đóng chai (MTVO) và Luật Dược phẩm (AMG) đối với nước chữa bệnh.",
                     mineralOriginTitle: "🌱 Nước Khoáng Thiên Nhiên Hình Thành Như Thế Nào?",
                     mineralOriginSubtitle: "Hành trình dài của nước qua lòng đất để đạt được độ tinh khiết và hàm lượng khoáng độc đáo:",
@@ -684,7 +685,7 @@
                     typeMineralwasserTitle: "NATURAL MINERAL WATER 🏔️",
                     typeMineralwasserText: "Original purity from protected deep springs, officially recognized, constant mineralization. Regulated by the Mineral and Table Water Ordinance (MTVO).",
                     typeHeilwasserTitle: "MEDICINAL WATER 💊",
-                    typeHeilwasserText: "Proven preventive, alleviating, or healing effects. Legally considered a medicinal product and subject to the Medicines Act (AMG). Requires BfArM approval.",
+                    typeHeilwasserText: "Proven preventive, alleviating, or healing effects. Legally considered a medicinal product and subject to the Medicines Act (AMG).",
                     regulationsSummary: "The quality of waters is regulated by different ordinances: Drinking Water Ordinance (TrinkwV), Mineral and Table Water Ordinance (MTVO), and for medicinal waters, the Medicines Act (AMG).",
                     mineralOriginTitle: "🌱 How is Natural Mineral Water Formed?",
                     mineralOriginSubtitle: "The long journey of water through the earth to its unique purity and mineralization:",
@@ -731,7 +732,12 @@
                 translatableElements.forEach(element => {
                     const key = element.dataset.translate;
                     if (translations[lang] && translations[lang][key]) {
-                        element.innerHTML = translations[lang][key];
+                        // For paragraph elements that should render bullet points with line breaks
+                        if (element.tagName === 'P' && (key.startsWith('type') || key === 'regulationsSummary') && lang === 'de_simple') {
+                             element.innerHTML = translations[lang][key].replace(/\n/g, '<br>');
+                        } else {
+                            element.innerHTML = translations[lang][key];
+                        }
                     } else if (translations.de[key]) { 
                          element.innerHTML = translations.de[key];
                     }
@@ -763,8 +769,6 @@
                     translatePage(currentLang);
                 });
             });
-
-            // AI Expert Section Logic has been removed.
         });
     </script>
 </body>
